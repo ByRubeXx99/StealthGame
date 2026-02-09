@@ -213,10 +213,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2520584975076441185, guid: 8198090654781c74c97d85e541ba3655,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8398127365082319173, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1636827865}
   m_SourcePrefab: {fileID: 100100000, guid: cc863d68d9411e749b1aba97a0c2ed76, type: 3}
 --- !u!1 &958986317
 GameObject:
@@ -3682,6 +3687,31 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7420405063886487454}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1636827859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8398127365082319173, guid: cc863d68d9411e749b1aba97a0c2ed76,
+    type: 3}
+  m_PrefabInstance: {fileID: 227444080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1636827865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636827859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25aab95eb73732488158a5b23b1b312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLookAround
+  rotationSpeed: 180
+  exposureTime: 1.5
+  rotationTime: 1
+  wall:
+    serializedVersion: 2
+    m_Bits: 64
+  Idirection: {x: 1, y: 0}
 --- !u!1 &1829045577
 GameObject:
   m_ObjectHideFlags: 0
