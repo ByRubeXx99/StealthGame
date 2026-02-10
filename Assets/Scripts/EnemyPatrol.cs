@@ -20,6 +20,10 @@ public class EnemyPatrol : MonoBehaviour
             Patrol();
             if(Collision()) { transform.Rotate(Vector3.forward * 180); Idirection *= -1; }
         }
+        else
+        {
+            Chase();
+        }
     }
 
     private void Patrol()
@@ -34,14 +38,10 @@ public class EnemyPatrol : MonoBehaviour
         {
             if (hit.collider.CompareTag("Wall"))
             {
-                Debug.Log("paret trobada");
+              
                 return true;
             }
-            else if (hit.collider.CompareTag("Player"))
-            {
-                Debug.Log("Player trobat ");
-                Speed = 0;
-            }
+         
         }
         return false;
     }
@@ -65,21 +65,33 @@ public class EnemyPatrol : MonoBehaviour
 
     private bool PlayerDetector()
     {
-        Collider2D playerCol = Physics2D.OverlapCircle(transform.position, DetectionRange, player);
+       Collider2D playerCol = Physics2D.OverlapCircle(transform.position, DetectionRange, player);
         if (playerCol == null) return false;
-
-        Vector2 dirToPlayer = ((Vector2)playerCol.transform.position - (Vector2)transform.position).normalized;
-        float angle = Vector2.Angle(Idirection, dirToPlayer);
-
-        if (angle <= VisionAngle / 2f)
+        else 
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToPlayer, DetectionRange, wall | player);
-            if (hit.collider != null && hit.collider.CompareTag("Player"))
+            Vector2 dirToPlayer = ((Vector2)playerCol.transform.position - (Vector2)transform.position).normalized;
+           
+            float angle = Vector2.Angle(Idirection, dirToPlayer);
+
+            if (angle <= VisionAngle / 2f)
             {
-                Debug.Log("Player found");
-                return true;
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToPlayer, DetectionRange, wall | player);
+                if (hit.collider != null && hit.collider.CompareTag("Player"))
+                {
+                    Debug.Log("Player found");
+                    return true;
+                }
             }
+           // return false;
         }
         return false;
+    } 
+    private void Chase()
+    {
+        Collider2D playerCol2 = Physics2D.OverlapCircle(transform.position, DetectionRange, player);
+
+        Vector2 dirToPlayer = ((Vector2)playerCol2.transform.position - (Vector2)transform.position).normalized;
+        transform.Translate(dirToPlayer*Speed*Time.deltaTime,Space.World);
+        Idirection = dirToPlayer;
     }
 }
