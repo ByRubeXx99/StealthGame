@@ -4,6 +4,7 @@ public class EnemyPatrol : MonoBehaviour
 {    
     public LayerMask wall,player;
     public Vector2 Idirection = Vector2.right;
+    private Transform PlayerTransform;
 
     public float  Speed = 3;
     public float DetectionRange;

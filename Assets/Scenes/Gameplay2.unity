@@ -222,6 +222,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1636827865}
+    - targetCorrespondingSourceObject: {fileID: 8398127365082319173, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1636827866}
   m_SourcePrefab: {fileID: 100100000, guid: cc863d68d9411e749b1aba97a0c2ed76, type: 3}
 --- !u!1 &958986317
 GameObject:
@@ -3712,6 +3716,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Idirection: {x: 1, y: 0}
+--- !u!114 &1636827866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636827859}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15acd144f08dc6448ebc32ac3ef63b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VisionDetector
+  Target:
+    serializedVersion: 2
+    m_Bits: 256
+  WhatIsVisible:
+    serializedVersion: 2
+    m_Bits: 512
+  CurrentTarget: {fileID: 1391341028}
+  DetectionRange: 2.5
+  VisionAngle: 45
 --- !u!1 &1829045577
 GameObject:
   m_ObjectHideFlags: 0
@@ -3815,6 +3840,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1951531519406176280, guid: 4f24ecb1ca8b8494bb9561ab27a61a21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2309650654607149604, guid: 4f24ecb1ca8b8494bb9561ab27a61a21,
         type: 3}
       propertyPath: m_SortingOrder
@@ -3830,10 +3860,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 4253607333136395384, guid: 4f24ecb1ca8b8494bb9561ab27a61a21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8589012799330787098, guid: 4f24ecb1ca8b8494bb9561ab27a61a21,
         type: 3}
       propertyPath: m_IncludeLayers.m_Bits
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808615969631705629, guid: 4f24ecb1ca8b8494bb9561ab27a61a21,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8808615969631705629, guid: 4f24ecb1ca8b8494bb9561ab27a61a21,
         type: 3}
@@ -3860,8 +3900,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
+      propertyPath: Speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: VisionAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
       propertyPath: wall.m_Bits
-      value: 320
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: player.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: DetectionRange
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8398127365082319173, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
