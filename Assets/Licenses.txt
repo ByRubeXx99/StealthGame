@@ -1,5 +1,4 @@
-	
-
+Assets & Tiles:
 	Topdown (Shooter) Pack
 
 	by  Kenney Vleugels (Kenney.nl)
@@ -19,3 +18,8 @@
 
 	Follow on Twitter for updates:
 	@KenneyWings
+Title Image:
+	Title Image © 2026 by Rubén Marín is licensed under Creative Commons Attribution-ShareAlike 4.0 International
+
+Ending Image:
+	Ending Image © 2026 by Rubén Marín is licensed under Creative Commons Attribution-ShareAlike 4.0 International
