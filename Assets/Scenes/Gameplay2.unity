@@ -4063,12 +4063,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
       propertyPath: VisionAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: visionAngle
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
@@ -4084,6 +4094,11 @@ PrefabInstance:
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
       propertyPath: DetectionRange
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: detectionRange
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8398127365082319173, guid: cc863d68d9411e749b1aba97a0c2ed76,
