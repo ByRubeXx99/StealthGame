@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {    
-    public float  Speed = 3;
     public LayerMask wall,player;
     public Vector2 Idirection = Vector2.right;
 
+    public float  Speed = 3;
     public float DetectionRange;
     public float VisionAngle;
+    public bool PlayerDetected = false;
 
     private void Update()
     {
-      Patrol();
-      if(Collision()){ transform.Rotate(0, 0, 180); Idirection=Idirection*-1; }
-    } 
+        PlayerDetected = PlayerDetector();
+
+        if(!PlayerDetected)
+        {
+            Patrol();
+            if(Collision()) { transform.Rotate(Vector3.forward * 180); Idirection *= -1; }
+        }
+    }
 
     private void Patrol()
     {
@@ -22,8 +28,9 @@ public class EnemyPatrol : MonoBehaviour
 
     private bool Collision()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position,Idirection,1f,wall|player);
-        if (hit.collider!=null) {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position,Idirection,DetectionRange,wall|player);
+        if (hit.collider!=null)
+        {
             if (hit.collider.CompareTag("Wall"))
             {
                 Debug.Log("paret trobada");
@@ -53,5 +60,25 @@ public class EnemyPatrol : MonoBehaviour
         Gizmos.DrawRay(transform.position, Direction2 * DetectionRange);
 
         Gizmos.color = Color.white;
+    }
+
+    private bool PlayerDetector()
+    {
+        Collider2D playerCol = Physics2D.OverlapCircle(transform.position, DetectionRange, player);
+        if (playerCol == null) return false;
+
+        Vector2 dirToPlayer = ((Vector2)playerCol.transform.position - (Vector2)transform.position).normalized;
+        float angle = Vector2.Angle(Idirection, dirToPlayer);
+
+        if (angle <= VisionAngle / 2f)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToPlayer, DetectionRange, wall | player);
+            if (hit.collider != null && hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Player found");
+                return true;
+            }
+        }
+        return false;
     }
 }
