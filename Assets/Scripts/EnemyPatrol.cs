@@ -4,11 +4,14 @@ public class EnemyPatrol : MonoBehaviour
 {    
     public float  Speed = 3;
     public LayerMask wall,player;
-    public Vector2 Idirection=Vector2.right;
+    public Vector2 Idirection = Vector2.right;
+
+    public float DetectionRange;
+    public float VisionAngle;
 
     private void Update()
     {
-        Patrol();
+      Patrol();
       if(Collision()){ transform.Rotate(0, 0, 180); Idirection=Idirection*-1; }
     } 
 
@@ -38,5 +41,17 @@ public class EnemyPatrol : MonoBehaviour
     private void OnDrawGizmos()
     {
         Debug.DrawRay(transform.position, Idirection, Color.red);
+
+        Gizmos.DrawWireSphere(transform.position, DetectionRange);
+
+        Gizmos.color = Color.yellow;
+
+        var Direction = Quaternion.AngleAxis(VisionAngle/2, Vector3.forward) * transform.right;
+        Gizmos.DrawRay(transform.position, Direction * DetectionRange);
+
+        var Direction2 = Quaternion.AngleAxis(-VisionAngle/2, Vector3.forward) * transform.right;
+        Gizmos.DrawRay(transform.position, Direction2 * DetectionRange);
+
+        Gizmos.color = Color.white;
     }
 }
