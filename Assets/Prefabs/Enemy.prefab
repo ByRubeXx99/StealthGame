@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2382053589436614086, guid: b53d11b36dc367d4aac2b52047dbbffd,
+  m_Sprite: {fileID: 2382053589436614086, guid: 8e33322112d600d449f130faeaf6f57c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -170,7 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7376fdc4ad45f174cae2e2e76f2ed08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrol
-  Speed: 1.02
-  wall:
+  Wall:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
+  Player:
+    serializedVersion: 2
+    m_Bits: 0
+  Speed: 1.02
+  DetectionRange: 2.5
+  VisionAngle: 45
