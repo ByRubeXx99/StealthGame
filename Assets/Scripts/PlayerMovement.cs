@@ -6,42 +6,38 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float Speed = 5.0f;
 
-    Rigidbody2D rigidbody;
+    Rigidbody2D Rigidbody;
     private bool isMoving;
 
-    private int score = 2000;
+    private int Score = 2000;
 
     public bool IsMoving => isMoving;
-
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void OnMove(InputValue value)
     {
-        // Read value from control, the type depends on what
-        // type of controls the action is bound to
-        var moveDir = value.Get<Vector2>();
+        var MoveDir = value.Get<Vector2>();
 
-        Vector2 velocity = moveDir * Speed;
-        rigidbody.linearVelocity = velocity;
+        Vector2 velocity = MoveDir * Speed;
+        Rigidbody.linearVelocity = velocity;
 
         isMoving = (velocity.magnitude > 0.01f);
 
         if (isMoving)
         {
-            float angle = Mathf.Atan2(moveDir.y, moveDir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle); 
+            float Angle = Mathf.Atan2(MoveDir.y, MoveDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, Angle); 
           
         }
     }
 
-    // NOTE: InputSystem: "SaveScore" action becomes "OnSaveScore" method
     public void OnSaveScore()
     {
         // Usage example on how to save score
-        PlayerPrefs.SetInt("Score", score);
-        score = PlayerPrefs.GetInt("Score");
+        PlayerPrefs.SetInt("Score", Score);
+        Score = PlayerPrefs.GetInt("Score");
     }
 }

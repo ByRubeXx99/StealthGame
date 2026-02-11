@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class DistanceUI : MonoBehaviour
 {
-    public TMP_Text distanceText;
-    public DistanceCounter counter;
+    public TMP_Text DistanceText;
+    public DistanceCounter Counter;
 
     void Update()
     {
-        if (counter == null) return;
-
-        distanceText.text = $"Distance: {counter.TotalDistanceInt} units";
+        if (Counter == null) return;
+        DistanceText.text = $"Distance: {Counter.TotalDistanceInt} m";
     }
 }

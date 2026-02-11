@@ -4,17 +4,17 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public InputAction exitAction;
+    public InputAction ExitAction;
 
     private void OnEnable()
     {
-        exitAction.Enable();
-        exitAction.started += ExitGame;
+        ExitAction.Enable();
+        ExitAction.started += ExitGame;
     }
     private void OnDisable()
     {
-        exitAction.started -= ExitGame;
-        exitAction.Disable();
+        ExitAction.started -= ExitGame;
+        ExitAction.Disable();
     }
     private void ExitGame(InputAction.CallbackContext context)
     {

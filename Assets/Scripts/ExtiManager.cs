@@ -6,20 +6,20 @@ public class ExitManager : MonoBehaviour
     [Header("Settings")]
     public string SceneName = "Ending";
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D Other)
     {
-        if (other.CompareTag("Player"))
+        if (Other.CompareTag("Player"))
         {
             FinishLevel();
         }
     }
     private void FinishLevel()
     {
-        int currentScore = 1000; 
-        float timePlayed = Time.timeSinceLevelLoad;
+        int CurrentScore = 1000; 
+        float TimePlayed = Time.timeSinceLevelLoad;
 
-        PlayerPrefs.SetInt("Score", currentScore);
-        PlayerPrefs.SetFloat("FinalTime", timePlayed);
+        PlayerPrefs.SetInt("Score", CurrentScore);
+        PlayerPrefs.SetFloat("FinalTime", TimePlayed);
         PlayerPrefs.SetInt("MissionStatus", 1);
         SceneManager.LoadScene(SceneName);
     }

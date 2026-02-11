@@ -4,34 +4,33 @@ using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public TMP_Text timerText;
-    public float startTime = 30f;
+    public TMP_Text TimerText;
+    public float StartTime = 30f;
 
-    private float currentTime;
-    private bool timeUp = false;
+    private float CurrentTime;
+    private bool TimeUp = false;
 
     void Start()
     {
-        currentTime = startTime;
+        CurrentTime = StartTime;
     }
 
     void Update()
     {
-        if (timeUp) return;
+        if (TimeUp) return;
 
-        if (currentTime > 0)
+        if (CurrentTime > 0)
         {
-            currentTime -= Time.deltaTime;
+            CurrentTime -= Time.deltaTime;
+            if (CurrentTime < 0)
+                CurrentTime = 0;
 
-            if (currentTime < 0)
-                currentTime = 0;
-
-            timerText.text = "Time: " + (int)currentTime;
+            TimerText.text = "Time: " + (int)CurrentTime;
         }
 
-        if (currentTime <= 0 && !timeUp)
+        if (CurrentTime <= 0 && !TimeUp)
         {
-            timeUp = true;
+            TimeUp = true;
             OnTimeUp();
         }
     }

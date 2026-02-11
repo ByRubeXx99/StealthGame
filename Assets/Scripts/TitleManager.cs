@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 
 public class TitleManager : MonoBehaviour
 {
-    public InputAction exitAction;
-    public InputAction startAction;
-    private bool canInput = false;
+    public InputAction ExitAction;
+    public InputAction StartAction;
+    private bool CanInput = false;
 
     private void Start()
     {
@@ -14,26 +14,26 @@ public class TitleManager : MonoBehaviour
     }
     private void EnableInput()
     {
-        canInput = true;
+        CanInput = true;
     }
     private void OnEnable()
     {
-        exitAction.Enable();
-        startAction.Enable();
-        exitAction.started += ExitGame;
-        startAction.started += StartGame;
+        ExitAction.Enable();
+        StartAction.Enable();
+        ExitAction.started += ExitGame;
+        StartAction.started += StartGame;
     }
     private void OnDisable()
     {
-        exitAction.started -= ExitGame;
-        startAction.started -= StartGame;
+        ExitAction.started -= ExitGame;
+        StartAction.started -= StartGame;
 
-        exitAction.Disable();
-        startAction.Disable();
+        ExitAction.Disable();
+        StartAction.Disable();
     }
     private void ExitGame(InputAction.CallbackContext context)
     {
-        if (!canInput) return;
+        if (!CanInput) return;
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -42,7 +42,7 @@ public class TitleManager : MonoBehaviour
     }
     private void StartGame(InputAction.CallbackContext context)
     {
-        if (!canInput) return;
+        if (!CanInput) return;
         SceneManager.LoadScene("Gameplay");
     }
 }

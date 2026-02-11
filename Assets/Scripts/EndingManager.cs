@@ -4,21 +4,21 @@ using UnityEngine.InputSystem;
 
 public class EndingManager : MonoBehaviour
 {
-    public InputAction exitAction;
-    public InputAction restartAction;
+    public InputAction ExitAction;
+    public InputAction RestartAction;
     private void OnEnable()
     {
-        exitAction.Enable();
-        restartAction.Enable();
-        exitAction.started += ExitGame;
-        restartAction.started += Restart;
+        ExitAction.Enable();
+        RestartAction.Enable();
+        ExitAction.started += ExitGame;
+        RestartAction.started += Restart;
     }
     private void OnDisable()
     {
-        exitAction.started -= ExitGame;
-        restartAction.started -= Restart;
-        exitAction.Disable();
-        restartAction.Disable();
+        ExitAction.started -= ExitGame;
+        RestartAction.started -= Restart;
+        ExitAction.Disable();
+        RestartAction.Disable();
     }
     private void ExitGame(InputAction.CallbackContext context)
     {
@@ -36,7 +36,7 @@ public class EndingManager : MonoBehaviour
     }
     private void DisableAllInput()
     {
-        exitAction.Disable();
-        restartAction.Disable();
+        ExitAction.Disable();
+        RestartAction.Disable();
     }
 }

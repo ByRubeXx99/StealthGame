@@ -256,22 +256,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a34c90ff2adf945b95e67298964647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  exitAction:
-    m_Name: Exit
+  ExitAction:
+    m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 500ad48f-fe7a-4f9e-943e-f4aa60035ca5
+    m_Id: 6c99f7c8-e792-4f7b-ab0c-2fb204618f71
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: c7775c28-2384-4a3f-8527-06e1da6f5ef8
-      m_Path: <Keyboard>/escape
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Exit
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
 --- !u!4 &125960558
 Transform:
@@ -589,6 +581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
+      propertyPath: Wall.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
       propertyPath: visionAngle
       value: 45
       objectReference: {fileID: 0}
@@ -596,6 +593,11 @@ PrefabInstance:
         type: 3}
       propertyPath: wall.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: Player.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
@@ -801,8 +803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272020b3db1032740883d640689c50f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DistanceUI
-  distanceText: {fileID: 1094873676}
-  counter: {fileID: 7420405063886487456}
+  DistanceText: {fileID: 1094873676}
+  Counter: {fileID: 0}
 --- !u!114 &930161025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,8 +901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea3477285477df40b242292bf4218bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountdownTimer
-  timerText: {fileID: 1422124885}
-  startTime: 31
+  TimerText: {fileID: 1422124885}
+  StartTime: 30
 --- !u!1 &950230353
 GameObject:
   m_ObjectHideFlags: 0
@@ -4604,8 +4606,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d015c37851e63d44839b0c860a080dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  target: {fileID: 1391341028}
-  offset: {x: 0, y: 0, z: -10}
+  Target: {fileID: 0}
+  Offset: {x: 0, y: 0, z: -10}
 --- !u!1 &1078514738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8398127365082319173, guid: cc863d68d9411e749b1aba97a0c2ed76,
@@ -4624,14 +4626,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25aab95eb73732488158a5b23b1b312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLookAround
-  rotationSpeed: 90
-  exposureTime: 1.5
-  rotationTime: 1
-  detectionRange: 2.5
-  visionAngle: 45
-  wall:
+  RotationSpeed: 90
+  ExposureTime: 1.5
+  RotationTime: 1
+  DetectionRange: 2.5
+  VisionAngle: 45
+  Wall:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 512
 --- !u!4 &1078514743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8623671435232683339, guid: cc863d68d9411e749b1aba97a0c2ed76,
@@ -4775,12 +4777,6 @@ RectTransform:
   m_AnchoredPosition: {x: 700, y: 500}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &1391341028 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1657931434646565098, guid: 2bed1a325e34cce4aa9089c277cd1adc,
-    type: 3}
-  m_PrefabInstance: {fileID: 7420405063886487454}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1422124883
 GameObject:
   m_ObjectHideFlags: 0
@@ -5028,14 +5024,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25aab95eb73732488158a5b23b1b312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLookAround
-  rotationSpeed: 180
-  exposureTime: 1.5
-  rotationTime: 1
-  detectionRange: 2.5
-  visionAngle: 45
-  wall:
+  RotationSpeed: 90
+  ExposureTime: 1.5
+  RotationTime: 1
+  DetectionRange: 2.5
+  VisionAngle: 45
+  Wall:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 512
 --- !u!4 &1636827870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8623671435232683339, guid: cc863d68d9411e749b1aba97a0c2ed76,
@@ -6247,6 +6243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
+      propertyPath: Wall.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
       propertyPath: visionAngle
       value: 45
       objectReference: {fileID: 0}
@@ -6254,6 +6255,11 @@ PrefabInstance:
         type: 3}
       propertyPath: wall.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: Player.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}

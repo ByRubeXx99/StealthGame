@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EnemyPatrol : MonoBehaviour
 {
-    public LayerMask wall, player;
+    public LayerMask Wall, Player;
 
-    public float speed = 1f;
-    public float detectionRange = 2.5f;
-    public float visionAngle = 45f;
+    public float Speed = 1f;
+    public float DetectionRange = 2.5f;
+    public float VisionAngle = 45f;
 
-    private Vector2 direction = Vector2.right;
-    private Transform playerTransform;
-    private bool playerDetected;
+    private Vector2 Direction = Vector2.right;
+    private Transform PlayerTransform;
+    private bool PlayerDetected;
 
     enum EnemyState
     {
@@ -20,20 +20,19 @@ public class EnemyPatrol : MonoBehaviour
         Chase
     }
 
-    EnemyState currentState = EnemyState.Patrol;
+    EnemyState CurrentState = EnemyState.Patrol;
 
 
     void Update()
     {
-        bool wasChasing = currentState == EnemyState.Chase;
-        playerDetected = PlayerDetector();
+        bool WasChasing = CurrentState == EnemyState.Chase;
+        PlayerDetected = PlayerDetector();
 
-        if (playerDetected) currentState = EnemyState.Chase;
-        else if (currentState == EnemyState.Chase) currentState = EnemyState.Patrol;
+        if (PlayerDetected) CurrentState = EnemyState.Chase;
+        else if (CurrentState == EnemyState.Chase) CurrentState = EnemyState.Patrol;
+        if(WasChasing && CurrentState == EnemyState.Patrol) ResetPatrolDirection();
 
-        if(wasChasing && currentState == EnemyState.Patrol) ResetPatrolDirection();
-
-        switch (currentState)
+        switch (CurrentState)
         {
             case EnemyState.Patrol:
                 Patrol();
@@ -47,32 +46,28 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Patrol()
 {
-    transform.Translate(direction * speed * Time.deltaTime, Space.World);
-    LookAt(transform.position + (Vector3)direction);
+    transform.Translate(Direction * Speed * Time.deltaTime, Space.World);
+    LookAt(transform.position + (Vector3)Direction);
 
-    direction = transform.right;
+    Direction = transform.right;
 
-    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, detectionRange, wall);
-    if (hit.collider != null)
-    {
-        direction *= -1;
-    }
+    RaycastHit2D hit = Physics2D.Raycast(transform.position, Direction, DetectionRange, Wall);
+    if (hit.collider != null) Direction *= -1; 
 }
 
     private bool PlayerDetector()
     {
-        Collider2D playerCol = Physics2D.OverlapCircle(transform.position, detectionRange, player);
+        Collider2D playerCol = Physics2D.OverlapCircle(transform.position, DetectionRange, Player);
         if (playerCol == null) return false;
 
         Vector2 dirToPlayer = ((Vector2)playerCol.transform.position - (Vector2)transform.position).normalized;
-        float angle = Vector2.Angle(direction, dirToPlayer);
-
-        if (angle <= visionAngle / 2f)
+        float angle = Vector2.Angle(Direction, dirToPlayer);
+        if (angle <= VisionAngle / 2f)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToPlayer, detectionRange, wall | player);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dirToPlayer, DetectionRange, Wall | Player);
             if (hit.collider != null && hit.collider.CompareTag("Player"))
             {
-                playerTransform = hit.collider.transform;
+                PlayerTransform = hit.collider.transform;
                 return true;
             }
         }
@@ -81,14 +76,14 @@ public class EnemyPatrol : MonoBehaviour
 
     private void ChasePlayer()
     {
-        if (playerTransform == null) return;
+        if (PlayerTransform == null) return;
 
-        Vector2 dir = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
+        Vector2 dir = ((Vector2)PlayerTransform.position - (Vector2)transform.position).normalized;
 
-        transform.Translate(dir * speed * Time.deltaTime, Space.World);
-        LookAt(playerTransform.position);
+        transform.Translate(dir * Speed * Time.deltaTime, Space.World);
+        LookAt(PlayerTransform.position);
 
-        direction = transform.right; // important per al FOV
+        Direction = transform.right;
     }
 
     private void LookAt(Vector2 target)
@@ -100,23 +95,22 @@ public class EnemyPatrol : MonoBehaviour
 
     private void ResetPatrolDirection()
     {
-        direction = transform.right.x >= 0 ? Vector2.right : Vector2.left;
+        Direction = transform.right.x >= 0 ? Vector2.right : Vector2.left;
         
-        float angle = direction == Vector2.right ? 0f : 180f;
+        float angle = Direction == Vector2.right ? 0f : 180f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, DetectionRange);
 
         Gizmos.color = Color.yellow;
-        Vector3 rightLimit = Quaternion.AngleAxis(visionAngle / 2, Vector3.forward) * direction;
-        Vector3 leftLimit = Quaternion.AngleAxis(-visionAngle / 2, Vector3.forward) * direction;
-
-        Gizmos.DrawRay(transform.position, rightLimit * detectionRange);
-        Gizmos.DrawRay(transform.position, leftLimit * detectionRange);
+        Vector3 rightLimit = Quaternion.AngleAxis(VisionAngle / 2, Vector3.forward) * Direction;
+        Vector3 leftLimit = Quaternion.AngleAxis(-VisionAngle / 2, Vector3.forward) * Direction;
+        Gizmos.DrawRay(transform.position, rightLimit * DetectionRange);
+        Gizmos.DrawRay(transform.position, leftLimit * DetectionRange);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

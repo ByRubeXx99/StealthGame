@@ -3,16 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class EnemyLookAround : MonoBehaviour
 {
-    public float rotationSpeed = 90f;
-    public float exposureTime = 1.5f;
-    public float rotationTime = 1f;
-    public float detectionRange = 2.5f;
-    public float visionAngle = 45f;
-    public LayerMask wall;
-
-    private float timer;
-    private bool waiting = true;
-    private int direction = 1;
+    public float RotationSpeed = 90f;
+    public float ExposureTime = 1.5f;
+    public float RotationTime = 1f;
+    public float DetectionRange = 2.5f;
+    public float VisionAngle = 45f;
+    public LayerMask Wall;
+    private float Timer;
+    private bool Waiting = true;
+    private int Direction = 1;
 
     private void Update()
     {
@@ -26,53 +25,52 @@ public class EnemyLookAround : MonoBehaviour
 
     private void LookAround()
     {
-        timer += Time.deltaTime;
+        Timer += Time.deltaTime;
 
-        if (waiting)
+        if (Waiting)
         {   
-            if (timer >= exposureTime)
+            if (Timer >= ExposureTime)
             {
-                timer = 0f;
-                waiting = false;
+                Timer = 0f;
+                Waiting = false;
             }
             return;
         }
         
-        float step = rotationSpeed * Time.deltaTime * direction;
+        float step = RotationSpeed * Time.deltaTime * Direction;
         transform.Rotate(0, 0, step);
 
-        if (timer >= rotationTime)
+        if (Timer >= RotationTime)
         {
-            timer = 0f;
-            waiting = true;
-            direction *= -1;
+            Timer = 0f;
+            Waiting = true;
+            Direction *= -1;
         }
     }
 
     private void ChangeDirection()
     {
-        direction *= -1;
-        waiting = true;
-        timer = 0f;
+        Direction *= -1;
+        Waiting = true;
+        Timer = 0f;
     }
 
     private bool Collision()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1f, wall);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1f, Wall);
         return hit.collider != null;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, DetectionRange);
 
         Gizmos.color = Color.yellow;
-        Vector3 rightLimit = Quaternion.AngleAxis(visionAngle / 2, Vector3.forward) * transform.right;
-        Vector3 leftLimit = Quaternion.AngleAxis(-visionAngle / 2, Vector3.forward) * transform.right;
-
-        Gizmos.DrawRay(transform.position, rightLimit * detectionRange);
-        Gizmos.DrawRay(transform.position, leftLimit * detectionRange);
+        Vector3 rightLimit = Quaternion.AngleAxis(VisionAngle / 2, Vector3.forward) * transform.right;
+        Vector3 leftLimit = Quaternion.AngleAxis(-VisionAngle / 2, Vector3.forward) * transform.right;
+        Gizmos.DrawRay(transform.position, rightLimit * DetectionRange);
+        Gizmos.DrawRay(transform.position, leftLimit * DetectionRange);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
