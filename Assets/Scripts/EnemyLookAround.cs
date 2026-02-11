@@ -3,15 +3,15 @@ using UnityEngine;
 public class EnemyLookAround : MonoBehaviour
 {
     public float rotationSpeed = 90f;
-    public float exposureTime = 1.5f;
+    public float exposureTime = 0.5f;
     public float rotationTime = 1f;
     public LayerMask wall;
-
-    public Vector2 Idirection = Vector2.right;
-
+    public float detectionRange = 2.5f;
+    public Vector2 Idirection = Vector2.down;
+    public float visionAngle = 45f;
     private float timer;
     private bool waiting = true;
-    private int direction = 1;
+    private int direction = -1;
 
     private void Update()
     {
@@ -33,7 +33,7 @@ public class EnemyLookAround : MonoBehaviour
             {
                 timer = 0f;
                 waiting = false;
-                //direction *= -1;
+                direction *= -1;
             }
             return;
         }
@@ -48,7 +48,7 @@ public class EnemyLookAround : MonoBehaviour
         {
             timer = 0f;
             waiting = true;
-            direction *= -1;
+            direction *= 1;
         }
     }
 
@@ -65,9 +65,18 @@ public class EnemyLookAround : MonoBehaviour
         return hit.collider != null;
     }
 
+   
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Idirection);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+
+        Gizmos.color = Color.yellow;
+        Vector3 rightLimit = Quaternion.AngleAxis(visionAngle / 2, Vector3.forward) * Idirection;
+        Vector3 leftLimit = Quaternion.AngleAxis(-visionAngle / 2, Vector3.forward) * Idirection;
+
+        Gizmos.DrawRay(transform.position, rightLimit * detectionRange);
+        Gizmos.DrawRay(transform.position, leftLimit * detectionRange);
     }
+
 }

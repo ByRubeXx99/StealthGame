@@ -76,22 +76,22 @@ public class EnemyPatrol : MonoBehaviour
         if (playerTransform == null) return;
 
         Vector2 dir = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
-
-        transform.Translate(dir * speed * Time.deltaTime, Space.World);
+        direction = dir;
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
         LookAt(playerTransform.position);
     }
 
-    private void Flip(float x)
+    /*private void Flip(float x)
     {
         transform.localScale = new Vector3(x >= 0 ? 1 : -1, 1, 1);
     }
-
+    */
     void LookAt(Vector2 target)
     {
         float dirX = target.x - transform.position.x;
         if (Mathf.Abs(dirX) < 0.01f) return;
 
-        transform.localScale = new Vector3(dirX > 0 ? 1 : -1, 1, 1);
+        transform.localScale = new Vector3(dirX > 0 ? 1 : -1.25f, 1.25f, 1.25f);
     }
 
     private void OnDrawGizmos()
