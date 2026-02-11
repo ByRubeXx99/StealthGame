@@ -636,16 +636,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a92f49ce5318242a4a5bd0f67f8fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndingManager
-  exitAction:
+  ExitAction:
     m_Name: Exit
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 7f981bf3-7a38-4070-8cdc-5ace513bce9b
+    m_Id: c2adbdaa-5950-41d9-a1e0-8a8b6c961e30
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 1a86c5a5-a8d4-4b91-af96-7bf16d0dc3b2
+      m_Id: 95523a0b-6be2-41e0-b978-7958d7b6fbf5
       m_Path: <Keyboard>/escape
       m_Interactions: 
       m_Processors: 
@@ -653,16 +653,16 @@ MonoBehaviour:
       m_Action: Exit
       m_Flags: 0
     m_Flags: 0
-  restartAction:
+  RestartAction:
     m_Name: Restart
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: ea9f11f0-eca4-4443-89c2-29d1daeb4982
+    m_Id: d50f4673-8347-4f5d-a264-82122f2e76a1
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: f2f10462-3bbf-4134-b9cd-03e98cb1acb1
+      m_Id: e6146322-447d-4a06-b087-53af4f48b866
       m_Path: <Keyboard>/enter
       m_Interactions: 
       m_Processors: 

@@ -62,9 +62,10 @@ public class ScoreBoard : MonoBehaviour
             TimeElapsed += Time.deltaTime;
             float Percentage = TimeElapsed / AnimationDuration;
             int CurrentValue = (int)Mathf.Lerp(StartValue, TargetScore, Percentage);
-            TextComponent.text = CurrentValue.ToString("D"); 
+            TextComponent.text = CurrentValue.ToString("D4"); 
+            
             yield return null;
         }
-        TextComponent.text = TargetScore.ToString("D");
+        TextComponent.text = TargetScore.ToString("D4");
     }
 }

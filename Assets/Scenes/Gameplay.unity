@@ -257,13 +257,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   ExitAction:
-    m_Name: 
+    m_Name: Exit
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 6c99f7c8-e792-4f7b-ab0c-2fb204618f71
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5fac0a54-e40d-4fdb-a2f2-15a643e64308
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Exit
+      m_Flags: 0
     m_Flags: 0
 --- !u!4 &125960558
 Transform:

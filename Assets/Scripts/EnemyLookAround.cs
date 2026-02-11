@@ -76,6 +76,9 @@ public class EnemyLookAround : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerPrefs.SetInt("MissionStatus", 0);
+            PlayerPrefs.SetInt("Score", 0);
+            PlayerPrefs.SetFloat("FinalTime", Time.timeSinceLevelLoad);
             SceneManager.LoadScene("Ending");
         }
     }
