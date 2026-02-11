@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
@@ -23,6 +24,7 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
+        bool wasChaasing = currentState == EnemyState.Chase;
         playerDetected = PlayerDetector();
 
         if (playerDetected) currentState = EnemyState.Chase;
@@ -40,16 +42,18 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     private void Patrol()
-    {
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
-        LookAt(transform.position + (Vector3)direction);
+{
+    transform.Translate(direction * speed * Time.deltaTime, Space.World);
+    LookAt(transform.position + (Vector3)direction);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, detectionRange, wall);
-        if (hit.collider != null)
-        {
-            direction *= -1;
-        }
+    direction = transform.right;
+
+    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, detectionRange, wall);
+    if (hit.collider != null)
+    {
+        direction *= -1;
     }
+}
 
     private bool PlayerDetector()
     {
@@ -76,22 +80,18 @@ public class EnemyPatrol : MonoBehaviour
         if (playerTransform == null) return;
 
         Vector2 dir = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
-        direction = dir;
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
+
+        transform.Translate(dir * speed * Time.deltaTime, Space.World);
         LookAt(playerTransform.position);
+
+        direction = transform.right; // important per al FOV
     }
 
-    /*private void Flip(float x)
+    private void LookAt(Vector2 target)
     {
-        transform.localScale = new Vector3(x >= 0 ? 1 : -1, 1, 1);
-    }
-    */
-    void LookAt(Vector2 target)
-    {
-        float dirX = target.x - transform.position.x;
-        if (Mathf.Abs(dirX) < 0.01f) return;
-
-        transform.localScale = new Vector3(dirX > 0 ? 1 : -1.25f, 1.25f, 1.25f);
+        Vector2 direction = target - (Vector2)transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void OnDrawGizmos()
