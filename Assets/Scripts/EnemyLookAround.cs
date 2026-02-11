@@ -13,10 +13,6 @@ public class EnemyLookAround : MonoBehaviour
     private bool waiting = true;
     private int direction = 1;
 
-    private void Start()
-    {
-        transform.right = Vector2.down;
-    }
     private void Update()
     {
         LookAround();

@@ -4315,12 +4315,11 @@ MonoBehaviour:
   rotationSpeed: 90
   exposureTime: 1.5
   rotationTime: 1
+  detectionRange: 2.5
+  visionAngle: 45
   wall:
     serializedVersion: 2
     m_Bits: 320
-  detectionRange: 2.5
-  Idirection: {x: 0, y: 1}
-  visionAngle: 45
 --- !u!4 &1078514743 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8623671435232683339, guid: cc863d68d9411e749b1aba97a0c2ed76,
@@ -4446,12 +4445,11 @@ MonoBehaviour:
   rotationSpeed: 180
   exposureTime: 1.5
   rotationTime: 1
+  detectionRange: 2.5
+  visionAngle: 45
   wall:
     serializedVersion: 2
     m_Bits: 320
-  detectionRange: 2.5
-  Idirection: {x: 0, y: -1}
-  visionAngle: 45
 --- !u!4 &1636827870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8623671435232683339, guid: cc863d68d9411e749b1aba97a0c2ed76,
@@ -5386,6 +5384,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1122026715980268837, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.09
+      objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
       propertyPath: Speed

@@ -24,11 +24,13 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
-        bool wasChaasing = currentState == EnemyState.Chase;
+        bool wasChasing = currentState == EnemyState.Chase;
         playerDetected = PlayerDetector();
 
         if (playerDetected) currentState = EnemyState.Chase;
         else if (currentState == EnemyState.Chase) currentState = EnemyState.Patrol;
+
+        if(wasChasing && currentState == EnemyState.Patrol) ResetPatrolDirection();
 
         switch (currentState)
         {
@@ -91,6 +93,14 @@ public class EnemyPatrol : MonoBehaviour
     {
         Vector2 direction = target - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    private void ResetPatrolDirection()
+    {
+        direction = transform.right.x >= 0 ? Vector2.right : Vector2.left;
+        
+        float angle = direction == Vector2.right ? 0f : 180f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
