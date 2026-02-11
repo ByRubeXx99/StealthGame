@@ -1,6 +1,7 @@
 using System;
+using Unity.VectorGraphics;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class EnemyPatrol : MonoBehaviour
 {
     public LayerMask wall, player;
@@ -38,7 +39,8 @@ public class EnemyPatrol : MonoBehaviour
                 Patrol();
                 break;
             case EnemyState.Chase:
-                ChasePlayer();
+                ChasePlayer(); 
+                
                 break;
         }
     }
@@ -115,5 +117,12 @@ public class EnemyPatrol : MonoBehaviour
 
         Gizmos.DrawRay(transform.position, rightLimit * detectionRange);
         Gizmos.DrawRay(transform.position, leftLimit * detectionRange);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("Ending");
+        }
     }
 }

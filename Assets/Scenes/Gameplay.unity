@@ -557,6 +557,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1122026715980268837, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1122026715980268837, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
       propertyPath: Speed
@@ -901,6 +911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 950230355}
   - component: {fileID: 950230354}
+  - component: {fileID: 950230356}
   m_Layer: 0
   m_Name: Visor
   m_TagString: Untagged
@@ -983,6 +994,160 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1636827870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!60 &950230356
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950230353}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.76, y: 7}
+    newSize: {x: 5.76, y: 7}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.39999998, y: -3.5}
+      - {x: 0.41, y: -3.49}
+      - {x: 1.5, y: -3.49}
+      - {x: 1.51, y: -3.5}
+      - {x: 1.9799999, y: -3.5}
+      - {x: 1.99, y: -3.49}
+      - {x: 2.6499999, y: -3.49}
+      - {x: 2.6599998, y: -3.5}
+      - {x: 2.85, y: -3.5}
+      - {x: 2.86, y: -3.46}
+      - {x: 2.86, y: -3.35}
+      - {x: 2.82, y: -3.29}
+      - {x: 2.77, y: -3.1899998}
+      - {x: 2.75, y: -3.1299999}
+      - {x: 2.71, y: -3.04}
+      - {x: 2.6699998, y: -2.9299998}
+      - {x: 2.6299999, y: -2.83}
+      - {x: 2.56, y: -2.6699998}
+      - {x: 2.52, y: -2.55}
+      - {x: 2.45, y: -2.3899999}
+      - {x: 2.4099998, y: -2.31}
+      - {x: 2.37, y: -2.21}
+      - {x: 2.31, y: -2.02}
+      - {x: 2.27, y: -1.93}
+      - {x: 2.22, y: -1.8299999}
+      - {x: 2.1499999, y: -1.67}
+      - {x: 2.11, y: -1.56}
+      - {x: 2.07, y: -1.48}
+      - {x: 2.04, y: -1.36}
+      - {x: 1.9699999, y: -1.1899999}
+      - {x: 1.92, y: -1.1}
+      - {x: 1.8199999, y: -0.83}
+      - {x: 1.77, y: -0.72999996}
+      - {x: 1.6999999, y: -0.57}
+      - {x: 1.66, y: -0.47}
+      - {x: 1.63, y: -0.35999998}
+      - {x: 1.55, y: -0.19999999}
+      - {x: 1.51, y: -0.11}
+      - {x: 1.4699999, y: -0.01}
+      - {x: 1.4399999, y: 0.099999994}
+      - {x: 1.36, y: 0.26}
+      - {x: 1.3199999, y: 0.37}
+      - {x: 1.17, y: 0.71999997}
+      - {x: 1.0799999, y: 0.95}
+      - {x: 1.02, y: 1.1}
+      - {x: 0.91999996, y: 1.37}
+      - {x: 0.87, y: 1.4499999}
+      - {x: 0.82, y: 1.5799999}
+      - {x: 0.71999997, y: 1.8299999}
+      - {x: 0.65999997, y: 2.01}
+      - {x: 0.62, y: 2.1}
+      - {x: 0.57, y: 2.18}
+      - {x: 0.52, y: 2.31}
+      - {x: 0.45999998, y: 2.47}
+      - {x: 0.42, y: 2.55}
+      - {x: 0.38, y: 2.6599998}
+      - {x: 0.35, y: 2.73}
+      - {x: 0.31, y: 2.82}
+      - {x: 0.26999998, y: 2.9299998}
+      - {x: 0.19999999, y: 3.09}
+      - {x: 0.16, y: 3.21}
+      - {x: 0.12, y: 3.3}
+      - {x: 0.08, y: 3.4199998}
+      - {x: 0.03, y: 3.47}
+      - {x: 0, y: 3.47}
+      - {x: -0.03, y: 3.46}
+      - {x: -0.049999997, y: 3.4199998}
+      - {x: -0.12, y: 3.25}
+      - {x: -0.16, y: 3.1299999}
+      - {x: -0.19999999, y: 3.04}
+      - {x: -0.26999998, y: 2.8799999}
+      - {x: -0.31, y: 2.79}
+      - {x: -0.35999998, y: 2.6799998}
+      - {x: -0.42999998, y: 2.51}
+      - {x: -0.45999998, y: 2.4099998}
+      - {x: -0.51, y: 2.32}
+      - {x: -0.58, y: 2.1499999}
+      - {x: -0.61, y: 2.04}
+      - {x: -0.76, y: 1.6899999}
+      - {x: -0.95, y: 1.23}
+      - {x: -1.02, y: 1.04}
+      - {x: -1.17, y: 0.68}
+      - {x: -1.2099999, y: 0.59}
+      - {x: -1.36, y: 0.22999999}
+      - {x: -1.51, y: -0.14999999}
+      - {x: -1.62, y: -0.41}
+      - {x: -1.73, y: -0.68}
+      - {x: -1.81, y: -0.89}
+      - {x: -1.9599999, y: -1.24}
+      - {x: -2.11, y: -1.5999999}
+      - {x: -2.1599998, y: -1.7099999}
+      - {x: -2.23, y: -1.88}
+      - {x: -2.26, y: -1.9799999}
+      - {x: -2.37, y: -2.23}
+      - {x: -2.4099998, y: -2.35}
+      - {x: -2.56, y: -2.7}
+      - {x: -2.6699998, y: -2.97}
+      - {x: -2.71, y: -3.09}
+      - {x: -2.75, y: -3.1899998}
+      - {x: -2.82, y: -3.34}
+      - {x: -2.83, y: -3.4499998}
+      - {x: -2.8, y: -3.49}
+      - {x: -2.77, y: -3.5}
+      - {x: -1.2099999, y: -3.5}
+      - {x: -1.1999999, y: -3.49}
+      - {x: -0.56, y: -3.49}
+      - {x: -0.55, y: -3.5}
+  m_UseDelaunayMesh: 1
 --- !u!1 &958986317
 GameObject:
   m_ObjectHideFlags: 0
@@ -5898,7 +6063,12 @@ PrefabInstance:
     - target: {fileID: 1122026715980268837, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}
       propertyPath: m_Radius
-      value: 0.09
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1122026715980268837, guid: cc863d68d9411e749b1aba97a0c2ed76,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4649512367318980861, guid: cc863d68d9411e749b1aba97a0c2ed76,
         type: 3}

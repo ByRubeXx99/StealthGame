@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyLookAround : MonoBehaviour
 {
@@ -72,5 +73,12 @@ public class EnemyLookAround : MonoBehaviour
 
         Gizmos.DrawRay(transform.position, rightLimit * detectionRange);
         Gizmos.DrawRay(transform.position, leftLimit * detectionRange);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("Ending");
+        }
     }
 }
