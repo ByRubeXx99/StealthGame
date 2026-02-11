@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DistanceUI : MonoBehaviour
 {
@@ -11,6 +10,6 @@ public class DistanceUI : MonoBehaviour
     {
         if (counter == null) return;
 
-        distanceText.text = $"Distance: {counter.totalDistance:F2} units";
+        distanceText.text = $"Distance: {counter.TotalDistanceInt} units";
     }
 }

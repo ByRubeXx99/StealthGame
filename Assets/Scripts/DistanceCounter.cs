@@ -1,7 +1,9 @@
 using UnityEngine;
+
 public class DistanceCounter : MonoBehaviour
 {
-    public float totalDistance { get; private set; }
+    private float totalDistance;
+    public int TotalDistanceInt => Mathf.FloorToInt(totalDistance); 
 
     private Vector3 lastPosition;
 
