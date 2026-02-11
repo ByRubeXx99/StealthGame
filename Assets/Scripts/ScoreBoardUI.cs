@@ -7,21 +7,27 @@ public class ScoreBoard : MonoBehaviour
     [Header("UI References")]
     public TextMeshProUGUI TitleText; 
     public TextMeshProUGUI ScoreText;
-    public TextMeshProUGUI TimeText;   
+    public TextMeshProUGUI TimeText;
+    public TextMeshProUGUI FinalScoreText;   
     public GameObject FilePanel;    
 
     [Header("Settings")]
     public float AnimationDuration = 2.0f;
     public Color WinColor = Color.green;
-    public Color LoseColor = Color.red; 
+    public Color LoseColor = Color.red;
+    public int Multiplier = 100;
 
     private void Start()
     {
-        int finalScore = PlayerPrefs.GetInt("Score", 0);
-        float finalTime = PlayerPrefs.GetFloat("FinalTime", 0f);
-        int missionStatus = PlayerPrefs.GetInt("MissionStatus", 1);
-
-        if (missionStatus == 1)
+        int Score = PlayerPrefs.GetInt("Score", 0);
+        float FinalTime = PlayerPrefs.GetFloat("FinalTime", 1f);
+        int MissionStatus = PlayerPrefs.GetInt("MissionStatus", 1);
+        float TimeForCalculation = Mathf.Floor(FinalTime);
+        
+        if (FinalTime <= 0.1f) FinalTime = 1f;
+        int TotalScoreVal = Mathf.RoundToInt((Score / TimeForCalculation) * Multiplier);
+        
+        if (MissionStatus == 1)
         {
             TitleText.text = "MISSION COMPLETED";
             TitleText.color = WinColor; 
@@ -30,34 +36,35 @@ public class ScoreBoard : MonoBehaviour
         {
             TitleText.text = "MISSION FAILED";
             TitleText.color = LoseColor;
+            TotalScoreVal = TotalScoreVal / 2;
         }
        
         ScoreText.text = "0000";
-        TimeText.text = FormatTime(finalTime); 
-        StartCoroutine(AnimateScore(finalScore));
+        TimeText.text = FormatTime(FinalTime);
+        FinalScoreText.text = "0000"; 
+        StartCoroutine(AnimateValue(ScoreText, Score));
+        StartCoroutine(AnimateValue(FinalScoreText, TotalScoreVal));
     }
-    private string FormatTime(float timeInSeconds)
+    private string FormatTime(float TimeInSeconds)
     {
-        float minutes = Mathf.FloorToInt(timeInSeconds / 60);
-        float seconds = Mathf.FloorToInt(timeInSeconds % 60);
-
-        return string.Format("{0:00}:{1:00}", minutes, seconds);
+        float Minutes = Mathf.FloorToInt(TimeInSeconds / 60);
+        float Seconds = Mathf.FloorToInt(TimeInSeconds % 60);
+        return string.Format("{0:00}:{1:00}", Minutes, Seconds);
     }
-    private IEnumerator AnimateScore(int targetScore)
+    private IEnumerator AnimateValue(TextMeshProUGUI TextComponent,int TargetScore)
     {
         yield return new WaitForSeconds(2f); 
-        float timeElapsed = 0f;
-        int startValue = 0;
+        float TimeElapsed = 0f;
+        int StartValue = 0;
 
-        while (timeElapsed < AnimationDuration)
+        while (TimeElapsed < AnimationDuration)
         {
-            timeElapsed += Time.deltaTime;
-            float percentage = timeElapsed / AnimationDuration;
-            int currentValue = (int)Mathf.Lerp(startValue, targetScore, percentage);
-
-            ScoreText.text = currentValue.ToString("D4"); 
+            TimeElapsed += Time.deltaTime;
+            float Percentage = TimeElapsed / AnimationDuration;
+            int CurrentValue = (int)Mathf.Lerp(StartValue, TargetScore, Percentage);
+            TextComponent.text = CurrentValue.ToString("D"); 
             yield return null;
         }
-        ScoreText.text = targetScore.ToString("D4");
+        TextComponent.text = TargetScore.ToString("D");
     }
 }

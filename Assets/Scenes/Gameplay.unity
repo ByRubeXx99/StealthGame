@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountdownTimer
   timerText: {fileID: 1422124885}
-  startTime: 30
+  startTime: 31
 --- !u!1 &950230353
 GameObject:
   m_ObjectHideFlags: 0
