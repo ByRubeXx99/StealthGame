@@ -25,7 +25,7 @@ public class CountdownTimer : MonoBehaviour
             if (CurrentTime < 0)
                 CurrentTime = 0;
 
-            TimerText.text = "Time: " + (int)CurrentTime;
+            TimerText.text = "Time Remaining: " + (int)CurrentTime + "s";
         }
 
         if (CurrentTime <= 0 && !TimeUp)
