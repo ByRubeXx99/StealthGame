@@ -1,9 +1,10 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DistanceUI : MonoBehaviour
 {
-    public Text distanceText;
+    public TMP_Text distanceText;
     public DistanceCounter counter;
 
     void Update()
