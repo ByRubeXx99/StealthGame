@@ -203,8 +203,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -74.49145, w: 0}
+  m_margin: {x: 0, y: 0, z: -127.98598, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -560,10 +560,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700a89d224a14654e9f73d43c39bba3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreBoard
+  TitleText: {fileID: 95296098}
   ScoreText: {fileID: 1876379110}
   TimeText: {fileID: 1227254568}
   FilePanel: {fileID: 1719408773}
   AnimationDuration: 2
+  WinColor: {r: 0.18039216, g: 0.54509807, b: 0.34117648, a: 0.78431374}
+  LoseColor: {r: 0.76862746, g: 0.11764706, b: 0.22745098, a: 0.78431374}
 --- !u!1 &1227254566
 GameObject:
   m_ObjectHideFlags: 0

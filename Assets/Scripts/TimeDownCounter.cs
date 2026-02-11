@@ -38,6 +38,8 @@ public class CountdownTimer : MonoBehaviour
 
     void OnTimeUp()
     {
+        PlayerPrefs.SetInt("MissionStatus", 0);
+        PlayerPrefs.SetInt("Score", 0);
         SceneManager.LoadScene("Ending");
     }
 }

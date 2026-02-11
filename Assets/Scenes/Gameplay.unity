@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 430222208}
   - component: {fileID: 430222210}
   - component: {fileID: 430222209}
+  - component: {fileID: 430222211}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -523,7 +524,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.000688076, y: 0.0010037422}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -533,8 +534,21 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.648674, y: 0.6492629}
   m_EdgeRadius: 0
+--- !u!114 &430222211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430222207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d476265e8bbbd7246bee8bdabba7ce0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExitManager
+  SceneName: Ending
 --- !u!1001 &447374945
 PrefabInstance:
   m_ObjectHideFlags: 0

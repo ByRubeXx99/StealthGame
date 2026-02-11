@@ -5,21 +5,35 @@ using System.Collections;
 public class ScoreBoard : MonoBehaviour
 {
     [Header("UI References")]
-    public TextMeshProUGUI ScoreText;    
+    public TextMeshProUGUI TitleText; 
+    public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI TimeText;   
     public GameObject FilePanel;    
 
     [Header("Settings")]
-    public float AnimationDuration = 2.0f; 
+    public float AnimationDuration = 2.0f;
+    public Color WinColor = Color.green;
+    public Color LoseColor = Color.red; 
 
     private void Start()
     {
         int finalScore = PlayerPrefs.GetInt("Score", 0);
         float finalTime = PlayerPrefs.GetFloat("FinalTime", 0f);
+        int missionStatus = PlayerPrefs.GetInt("MissionStatus", 1);
+
+        if (missionStatus == 1)
+        {
+            TitleText.text = "MISSION COMPLETED";
+            TitleText.color = WinColor; 
+        }
+        else
+        {
+            TitleText.text = "MISSION FAILED";
+            TitleText.color = LoseColor;
+        }
        
         ScoreText.text = "0000";
         TimeText.text = FormatTime(finalTime); 
-
         StartCoroutine(AnimateScore(finalScore));
     }
     private string FormatTime(float timeInSeconds)
